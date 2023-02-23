@@ -4,13 +4,11 @@ class UserService {
     this.User = client.db().collection("users");
   }
 
-  // Định nghĩa các phương thức truy xuất CSDL sử dụng mongodb API
   extractConactData(payload) {
     const user = {
       email: payload.email,
       password: payload.password,
     };
-    // Remove undefined fields
     Object.keys(user).forEach(
       (key) => user[key] === undefined && delete user[key]
     );
@@ -23,6 +21,5 @@ class UserService {
     );
     return result.value;
   }
-
 }
 module.exports = UserService;
